@@ -39,8 +39,10 @@ public class PagamentoService {
 
     public Pagamento criarPagamento(Pagamento pagamento) {
         pagamento.setStatus(StatusPagamento.PENDENTE_PROCESSAMENTO);
-        if(pagamento.getMetodoPagamento() == MetodoPagamento.boleto || pagamento.getMetodoPagamento() == MetodoPagamento.pix){
+        if(pagamento.getMetodoPagamento() == MetodoPagamento.BOLETO || pagamento.getMetodoPagamento() == MetodoPagamento.PIX){
             pagamento.setNumeroCartao(null);
+        } else if (pagamento.getNumeroCartao() == null) {
+            throw new IllegalArgumentException("O número do cartão é obrigatório para pagamentos com cartão");
         }
         return pagamentoRepository.save(pagamento);
     }
@@ -56,11 +58,15 @@ public class PagamentoService {
                 case PENDENTE_PROCESSAMENTO:  // Pode ser atualizado para PROCESSADO_COM_SUCESSO PROCESSADO_COM_FALHA
                     if (novoStatus == StatusPagamento.PROCESSADO_COM_SUCESSO || novoStatus == StatusPagamento.PROCESSADO_COM_FALHA) {
                         pagamentoExistente.setStatus(novoStatus);
+                    } else {
+                        return null;
                     }
                     break;
                 case PROCESSADO_COM_FALHA:   // Pode ser atualizado para PENDENTE_PROCESSAMENTO
                     if (novoStatus == StatusPagamento.PENDENTE_PROCESSAMENTO) {
                         pagamentoExistente.setStatus(novoStatus);
+                    } else {
+                        return null;
                     }
                     break;
                 default:

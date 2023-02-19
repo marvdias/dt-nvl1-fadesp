@@ -136,7 +136,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\":\"Springboot h2 tst#4\",\n    \"description\": \"description of Springboot h2 tst#4\",\n    \"published\": true\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -169,7 +169,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\":\"Springboot h2 tst#4\",\n    \"description\": \"description of Springboot h2 tst#4\",\n    \"published\": true\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -177,7 +177,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/pagamento/cpf_cnpj/12345678900",
+					"raw": "http://localhost:8080/api/pagamento/cpf_cnpj/123456128900",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -187,7 +187,7 @@
 						"api",
 						"pagamento",
 						"cpf_cnpj",
-						"12345678900"
+						"123456128900"
 					]
 				}
 			},
@@ -203,7 +203,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\":\"Springboot h2 tst#4\",\n    \"description\": \"description of Springboot h2 tst#4\",\n    \"published\": true\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -211,7 +211,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/pagamento/status/PROCESSADO_COM_SUCESSO",
+					"raw": "http://localhost:8080/api/pagamento/status/processado_com_sucesso",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -221,7 +221,7 @@
 						"api",
 						"pagamento",
 						"status",
-						"PROCESSADO_COM_SUCESSO"
+						"processado_com_sucesso"
 					]
 				}
 			},

@@ -31,7 +31,7 @@ public class FadespDtNvl1ApplicationTest {
         // Cria um novo pagamento
         Pagamento pagamento = new Pagamento();
         pagamento.setCpfCnpj("12345678900");
-        pagamento.setMetodoPagamento(MetodoPagamento.cartao_credito);
+        pagamento.setMetodoPagamento(MetodoPagamento.CARTAO_CREDITO);
         pagamento.setNumeroCartao("1234567890123456");
         pagamento.setValor(new BigDecimal("100.00"));
         pagamento.setStatus(StatusPagamento.PENDENTE_PROCESSAMENTO);
@@ -49,18 +49,18 @@ public class FadespDtNvl1ApplicationTest {
         // Cria um novo pagamento
         Pagamento pagamento = new Pagamento();
         pagamento.setCpfCnpj("12345678900");
-        pagamento.setMetodoPagamento(MetodoPagamento.cartao_credito);
+        pagamento.setMetodoPagamento(MetodoPagamento.CARTAO_CREDITO);
         pagamento.setNumeroCartao("1234567890123456");
         pagamento.setValor(new BigDecimal("100.00"));
 
         Pagamento pagamento2 = new Pagamento();
         pagamento2.setCpfCnpj("12345678900");
-        pagamento2.setMetodoPagamento(MetodoPagamento.pix);
+        pagamento2.setMetodoPagamento(MetodoPagamento.PIX);
         pagamento2.setValor(new BigDecimal("150.00"));
 
         Pagamento pagamento3 = new Pagamento();
         pagamento3.setCpfCnpj("12345678912");
-        pagamento3.setMetodoPagamento(MetodoPagamento.pix);
+        pagamento3.setMetodoPagamento(MetodoPagamento.PIX);
         pagamento3.setValor(new BigDecimal("250.00"));
 
 
@@ -93,7 +93,7 @@ public class FadespDtNvl1ApplicationTest {
         // Cria um novo pagamento
         Pagamento pagamento = new Pagamento();
         pagamento.setCpfCnpj("12345678900");
-        pagamento.setMetodoPagamento(MetodoPagamento.cartao_credito);
+        pagamento.setMetodoPagamento(MetodoPagamento.CARTAO_CREDITO);
         pagamento.setNumeroCartao("1234567890123456");
         pagamento.setValor(new BigDecimal("100.00"));
         pagamento.setStatus(StatusPagamento.PENDENTE_PROCESSAMENTO);
@@ -115,7 +115,7 @@ public class FadespDtNvl1ApplicationTest {
         // cria um pagamento com status "Pendente de processamento"
         Pagamento pagamento = new Pagamento();
         pagamento.setCpfCnpj("11111111111");
-        pagamento.setMetodoPagamento(MetodoPagamento.cartao_credito);
+        pagamento.setMetodoPagamento(MetodoPagamento.CARTAO_CREDITO);
         pagamento.setNumeroCartao("1111111111111111");
         pagamento.setValor(new BigDecimal("100.00"));
 

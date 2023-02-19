@@ -5,20 +5,33 @@ import java.math.BigDecimal;
 import com.fadesp.mdias.fadesp_dt_nvl1.model.MetodoPagamento;
 import com.fadesp.mdias.fadesp_dt_nvl1.model.Pagamento;
 import com.fadesp.mdias.fadesp_dt_nvl1.model.StatusPagamento;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Data;
 
 @Data
 public class PagamentoDTO {
-    
+
+    @JsonInclude(Include.NON_NULL)
     private Long id;
+    @JsonInclude(Include.NON_NULL)
     private String cpfCnpj;
+    @JsonInclude(Include.NON_NULL)
     private MetodoPagamento metodoPagamento;
+    @JsonInclude(Include.NON_NULL)
     private String numeroCartao;
+    @JsonInclude(Include.NON_NULL)
     private BigDecimal valor;
+    @JsonInclude(Include.NON_NULL)
     private StatusPagamento status;
+    @JsonInclude(Include.NON_NULL)
+    private String error;
 
     public PagamentoDTO() {
+    }
+    public PagamentoDTO(String error) {
+        this.error = error;
     }
     public PagamentoDTO(Pagamento pagamento) {
         this.id = pagamento.getId();

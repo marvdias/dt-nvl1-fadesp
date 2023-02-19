@@ -30,9 +30,11 @@ public class PagamentoController {
     private PagamentoService pagamentoService;
 
     @GetMapping
-    public List<PagamentoDTO> listarPagamentos() {
+    public ResponseEntity<List<PagamentoDTO>> listarPagamentos() {
         List<Pagamento> pagamentos = pagamentoService.listarPagamentos();
-        return pagamentos.stream().map(PagamentoDTO::new).collect(Collectors.toList());
+        List<PagamentoDTO> pagamentosDTO = pagamentos.stream().map(PagamentoDTO::new).collect(Collectors.toList());
+        return ResponseEntity.ok(pagamentosDTO);
+
     }
 
     @GetMapping("/{id}")
@@ -50,8 +52,12 @@ public class PagamentoController {
     @PostMapping
     public ResponseEntity<PagamentoDTO> criarPagamento(@RequestBody PagamentoDTO pagamentoDTO) {
         Pagamento pagamento = new Pagamento(pagamentoDTO);
-        Pagamento novoPagamento = pagamentoService.criarPagamento(pagamento);
-        pagamentoDTO = new PagamentoDTO(novoPagamento);
+        try {
+            Pagamento novoPagamento = pagamentoService.criarPagamento(pagamento);
+            pagamentoDTO = new PagamentoDTO(novoPagamento);        
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(new PagamentoDTO(e.getMessage()));
+        }
         
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoDTO);
     }
@@ -65,7 +71,7 @@ public class PagamentoController {
             pagamentoDTO = new PagamentoDTO(pagamentoAtualizado);
             return ResponseEntity.ok(pagamentoDTO);
         } else {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 
@@ -77,7 +83,7 @@ public class PagamentoController {
             return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 
         } else {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 
@@ -95,7 +101,7 @@ public class PagamentoController {
     public ResponseEntity<List<PagamentoDTO>> buscarPorMetodoPagamento(@PathVariable String metodoPagamento) {
         MetodoPagamento enumMetodoPagamento;
         try {
-            enumMetodoPagamento = MetodoPagamento.valueOf(metodoPagamento);
+            enumMetodoPagamento = MetodoPagamento.valueOf(metodoPagamento.toUpperCase());
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().build();
         }
@@ -110,7 +116,7 @@ public class PagamentoController {
     public ResponseEntity<List<PagamentoDTO>> buscarPorStatusPagamento(@PathVariable String statusPagamento) {
         StatusPagamento enumStatusPagamento;
         try {
-            enumStatusPagamento = StatusPagamento.valueOf(statusPagamento);
+            enumStatusPagamento = StatusPagamento.valueOf(statusPagamento.toUpperCase());
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().build();
         }
