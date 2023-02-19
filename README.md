@@ -11,5 +11,8 @@ Pagamentos:
 
 Buscas podem ser feitas por
 - Id: Inteiro
-- MetodosPagamento: boleto,pix,cartao_credito,cartao_debito
-- Status: PENDENTE_PROCESSAMENTO,PROCESSADO_COM_SUCESSO,PROCESSADO_COM_FALHA
+- MetodosPagamento: String BOLETO,PIX,CARTAO_CREDITO,CARTAO_DEBITO
+- Status: String PENDENTE_PROCESSAMENTO,PROCESSADO_COM_SUCESSO,PROCESSADO_COM_FALHA
+
+## Postman
+O arquivo Fadesp Desafio Tecnico Nvl1.postman_collection.json contem os endpoints que podem ser utilizados.
